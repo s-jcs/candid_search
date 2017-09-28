@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["s-jcs"]
   spec.email         = ["shosundberg@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Simple search using model scopes to create queries for ActiveRecord}
+  spec.description   = %q{Simple search using model scopes to create queries for ActiveRecord}
+  spec.homepage      = "https://github.com/s-jcs/candid_search"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
