@@ -1,5 +1,7 @@
 # CandidSearch
 
+### DISCLAIMER: Currently a work in-progress, and will not be usable until 0.2.0
+
 Simple search using model scopes to create queries for ActiveRecord
 
 ## Installation
