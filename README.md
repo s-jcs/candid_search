@@ -22,6 +22,58 @@ Or install it yourself as:
 
 ## Usage
 
+CandidSearch requires you to include the module in the Active Model class
+```ruby
+class User < ApplicationRecord
+
+  include CandidSearch
+
+...
+
+```
+
+Prepare named scopes to be used by CandidSearch in the Active Model class
+```ruby
+class User < AppplicationRecord
+
+  include CandidSearch
+
+  scope :with_id,   ->(val) { where(id: val) }
+  scope :with_name, ->(val) { where(name: val) }
+
+...
+
+```
+
+
+Call `xxxx` method on your model class in your Action Controller,
+and pass a hash with key (scope name) value (search value) pairs.
+### Be sure to whitelist the parameters passed to the method
+```ruby
+class UsersController < ApplicationController
+
+  def index
+    @users = User.xxxx(search_params)
+  end
+
+  def search_params
+    {
+      with_id: permitted_search_params[:user_id],
+      with_name: permitted_search_params[:name],
+    }
+  end
+
+  def permitted_search_params
+    params.permit(:user_id, :name)
+  end
+end
+```
+
+You can use multiple search keys by creating named scopes containing `or`
+```ruby
+  scope :with_id_or_name, ->(val) { with_id(val).or(with_name(val)) }
+```
+
 
 ## Development
 
