@@ -46,14 +46,14 @@ class User < AppplicationRecord
 ```
 
 
-Call `xxxx` method on your model class in your Action Controller,
+Call `search_with` method on your model class in your Action Controller,
 and pass a hash with key (scope name) value (search value) pairs.
 ### Be sure to whitelist the parameters passed to the method
 ```ruby
 class UsersController < ApplicationController
 
   def index
-    @users = User.xxxx(search_params)
+    @users = User.search_with(search_params)
   end
 
   def search_params
@@ -71,6 +71,9 @@ end
 
 You can use multiple search keys by creating named scopes containing `or`
 ```ruby
+  scope :with_id,   ->(val) { where(id: val) }
+  scope :with_name, ->(val) { where(name: val) }
+
   scope :with_id_or_name, ->(val) { with_id(val).or(with_name(val)) }
 ```
 

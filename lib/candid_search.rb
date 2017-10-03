@@ -11,9 +11,9 @@ module CandidSearch
   module ClassMethods
     # NOTE: Call the class method with a hash containing named scope, and search
     #       key pairs. Always whitelist parameters before passing it to the method
-    def filter(filtering_params)
+    def search_with(search_params)
       results = self.all # create an anonymous scope
-      filtering_params.each do |key, value|
+      search_params.each do |key, value|
         next if value.blank?
 
         # NOTE: if name contains `_or_` merge two conditions.
